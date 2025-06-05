@@ -10,6 +10,8 @@ const connectDB = require('./server/config/db');
 const session = require('express-session');
 const { isActiveRoute } = require('./server/helpers/routehelpers');
 
+const cors = require('cors');
+
 const app = express();
 const PORT = 5000 || process.env.PORT;  // set port for hosting
 
