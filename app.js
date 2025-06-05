@@ -15,6 +15,9 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000 || process.env.PORT;  // set port for hosting
 
+app.use(cors({
+    origin: 'http://localhost:5173' // or '*' for all origins during dev
+  }));
 
 // connect to DB
 connectDB();
