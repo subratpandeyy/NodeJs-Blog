@@ -61,7 +61,6 @@ router.get('/post/:id', async (req, res) => {
 // post for search
 router.post('/search', async (req, res) => {
     try {
-
         const locals = {
             title: "Search",
             description: "Simple Blog created with Nodejs, Express & MongoDB."
@@ -78,7 +77,8 @@ router.post('/search', async (req, res) => {
 
         res.render("search", {
             locals,
-            data
+            data,
+            currentRoute: '/'
         });
     }
     catch(error) {
@@ -86,7 +86,7 @@ router.post('/search', async (req, res) => {
     }
 })
 
-
+// routing for pages
 
 router.get('/about', (req, res) => {
     res.render('about', {

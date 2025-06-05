@@ -41,6 +41,10 @@ textarea {
   margin-bottom: 1rem;
 }
 
+#searchClose {
+  cursor: pointer;
+}
+
 .btn {
   background-color: var(--black);
   border: none;
@@ -109,6 +113,7 @@ img {
   font-size: 25px;
   text-decoration: none;
   grid-area: logo;
+  /* text-shadow: 2px 2px 2px black; */
 }
 
 .header-logo:hover {
@@ -235,7 +240,7 @@ img {
 .article-ul li {
   font-size: 24px;
   cursor: pointer;
-  transition: filter 0.1s;
+  transition: filter 0.3s;
 }
 
 .article-ul li:not(:last-child) {
@@ -243,6 +248,8 @@ img {
 }
 
 .article-ul li:hover {
+  transition: 0.4s;
+  transform: scale(1.02);
   filter: none;
 }
 
@@ -304,7 +311,8 @@ img {
 .searchBar {
   visibility: hidden;
   transform: translateY(-100px);
-  background-color: var(--black);
+  /* background-color: var(--black); */
+  backdrop-filter: blur(5px);
   padding: 4px 0;
   position: absolute;
   left: 0;
@@ -326,7 +334,7 @@ img {
   position: absolute;
   top: 0;
   right: 0;
-  color: var(--gray-light);
+  color: var(--gray-dark);
   padding: 15px;
 }
 
@@ -341,4 +349,11 @@ img {
 
 .pagination:hover {
   color: var(--black);
+}
+
+@media(max-width: 425px) {
+  .hero-image {
+    height: auto;
+    max-width: 350px;
+  }
 }
