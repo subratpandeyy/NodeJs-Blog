@@ -2,7 +2,7 @@
 
 :root {
   --black: #1c1c1c;
-  --gray: #7E7E7E;
+  --gray: #5e5d5d;
   --gray-light: #E4E4E4;
   --red: #b30000;
   --font-size-base: 1rem;
@@ -17,7 +17,10 @@ body {
   color: var(--black);
   font-size: var(--font-size-base);
   background-color: #FAF5EE;
-  background-image: url("/img/img-noise-361x370.png");
+  background-image: url("/img/TP.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 0;
 }
 
@@ -187,6 +190,8 @@ img {
 .author-heading {
   margin-top: 10px;
   margin-bottom: 5px;
+  color: #f4f4f4;
+  text-shadow: black 1px 0 10px;
 }
 
 .author-body {
@@ -198,16 +203,20 @@ img {
 /* Home Article List */
 .articles-heading {
   margin-top: 4rem;
-  font-weight: 400;
+  
+  /* font-weight: 400; */
 }
 
 .article-ul {
   list-style-type: none;
-  padding: 0;
+  padding: 20px;
   margin: 0;
   font-size: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
   display: flex;
   flex-direction: column;
+  background-color: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
 }
 
 .article-list-date {
@@ -263,12 +272,20 @@ img {
 
 
 .article {
-  white-space: pre-wrap;
+  /* white-space: pre-wrap; */
+  background-color: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  padding: 20px;
 }
 
 
 /* Footer */
 .footer {
+  background-color: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  padding: 20px;
   margin: 4rem;
   text-align: center;
 }
