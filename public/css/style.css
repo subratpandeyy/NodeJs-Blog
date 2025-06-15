@@ -2,11 +2,11 @@
 
 :root {
   --black: #1c1c1c;
-  --gray: #5e5d5d;
-  --gray-light: #E4E4E4;
+  --gray: #313131;
+  --gray-light: #ccc;
   --red: #b30000;
   --font-size-base: 1rem;
-  --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --font-size-md: clamp(1.15rem, 0.60vw + 1rem, 1.50rem);
   --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
   --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
   --border-radius: 10px;
@@ -17,7 +17,7 @@ body {
   color: var(--black);
   font-size: var(--font-size-base);
   background-color: #FAF5EE;
-  background-image: url("/img/TP.jpg");
+  background-image: url("/img/rear.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -116,6 +116,7 @@ img {
   font-size: 25px;
   text-decoration: none;
   grid-area: logo;
+  color: #ccc;
   /* text-shadow: 2px 2px 2px black; */
 }
 
@@ -151,11 +152,11 @@ img {
   border: 2px solid transparent;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--black);
+  color: var(--gray-light);
 }
 
 .header-button button:hover {
-  border: 2px solid var(--black);
+  border: 2px solid var(--gray-light);
 }
 
 /* Header -> Navigation */
@@ -169,12 +170,16 @@ img {
 }
 
 .header-nav ul a {
-  padding: 10px;
+  padding: 8px 20px;
   text-decoration: none;
+  background-color: rgba(255,255,255, 0.2);
+  border: 1px solid rgba(255,255,255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
 }
 
 .header-nav ul a.active {
-  color: #7E7E7E;
+  color: var(--gray-light);
 }
 
 .header-nav ul a:hover {
@@ -202,7 +207,7 @@ img {
 
 /* Home Article List */
 .articles-heading {
-  margin-top: 4rem;
+  margin-top: 2rem;
   
   /* font-weight: 400; */
 }
@@ -299,7 +304,10 @@ img {
 }
 
 .admin-posts {
-  padding: 0;
+  background-color: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  padding: 20px;
   margin: 0;
 }
 
@@ -366,11 +374,4 @@ img {
 
 .pagination:hover {
   color: var(--black);
-}
-
-@media(max-width: 425px) {
-  .hero-image {
-    height: auto;
-    max-width: 350px;
-  }
 }
