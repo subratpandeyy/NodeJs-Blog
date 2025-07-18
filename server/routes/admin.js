@@ -4,6 +4,7 @@ const Post  = require('../models/Post');
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Contact = require('../models/Contact');
 
 const adminLayout = '../views/layouts/admin';
 const jwtSecret = process.env.JWT_SECRET;
@@ -204,5 +205,51 @@ router.post('/register', async (req,res) => {
         console.log(error);
     }
 });
+
+// Get Messages
+
+router.get('/messages', authMiddleware, async(req, res) => {
+    try {
+
+        const data = await Contact.find();
+
+        const locals = {
+            title: data.title,
+            description: "Simple Blog created with Nodejs, Express & MongoDB."
+        }
+
+        res.render('admin/messages', {
+            locals,
+            data,
+            currentRoute: `/msg/:id`
+        });
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+// Individual msg
+router.get('/messages/:id', async (req, res) => {
+    try {
+        let slug = req.params.id;
+
+        const data = await Contact.findById(slug);
+
+        const locals = {
+            title: 'Message Details',
+            description: "Simple Blog created with Nodejs, Express & MongoDB."
+        };
+
+        res.render('admin/msg', {
+            locals,
+            data,
+            currentRoute: `/messages/${slug}` 
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Something went wrong");
+    }
+});
+
 
 module.exports = router;

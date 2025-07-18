@@ -5,6 +5,8 @@ const expressLayout = require('express-ejs-layouts');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
+
 
 const connectDB = require('./server/config/db');
 const session = require('express-session');
@@ -34,7 +36,6 @@ app.use(session({
     store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI
     }),
-
 }))
 
 app.use(express.static('public'));

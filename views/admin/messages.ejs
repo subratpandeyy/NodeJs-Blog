@@ -1,0 +1,13 @@
+<section class="articles">
+    <h2 class="articles-heading">Inbox</h2>
+
+    <ul class="article-ul">
+        <% data.forEach(msg => { %>
+        <li>
+            <a href="/messages/<%= msg._id %>">
+                <span><%= msg.name %></span>
+                <span class="article-list-date"><%= msg.createdAt.toDateString() %></span>
+            </a>
+        </li>
+        <% }) %>
+    </ul>

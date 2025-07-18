@@ -1,122 +1,7 @@
-// const express = require('express');
-// const router = express.Router();
-// const Post  = require('../models/Post');
-
-// // Routes
-// router.get('', async (req, res) => {
-//     try {
-//         const locals = {
-//             title: 'Nodejs Blog',
-//             description: 'Simple Blog created with nodejs, expressjs and mongodb'
-//         }
-        
-//         let perPage = 10;
-//         let page = req.query.page || 1;
-
-//         const data = await Post.aggregate([ { $sort: { createdAt: -1 } } ])
-//         .skip(perPage * page - perPage)
-//         .limit(perPage)
-//         .exec();
-
-//         const count = await Post.count;
-//         const nextPage = parseInt(page) + 1;
-//         const hasNextPage = nextPage <= Math.ceil(count / perPage);
-
-//         res.render('index',{ 
-//             locals,
-//             data,
-//             current: page,
-//             nextPage: hasNextPage ? nextPage : null,
-//             currentRoute: '/'
-//          });
-//     }
-//     catch(error) {
-//         console.log(error);
-//     }
-// });
-
-// // get route for posts
-// router.get('/post/:id', async (req, res) => {
-//     try {
-//         let slug = req.params.id;
-
-//         const data = await Post.findById({ _id: slug });
-
-//         const locals = {
-//             title: data.title,
-//             description: "Simple Blog created with Nodejs, Express & MongoDB."
-//         }
-
-//         res.render('post', { 
-//             locals, 
-//             data,
-//             currentRoute: `/post/${slug}`
-//          });
-//     }
-//     catch(error) {
-//         console.log(error);
-//     }
-// })
-
-// // post for search
-// router.post('/search', async (req, res) => {
-//     try {
-//         const locals = {
-//             title: "Search",
-//             description: "Simple Blog created with Nodejs, Express & MongoDB."
-//         }
-
-//         let searchTerm = req.body.searchTerm;
-//         const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9]/g, "")
-//         const data = await Post.find({
-//             $or: [
-//                 { title: { $regex: new RegExp(searchNoSpecialChar, 'i') } },
-//                 { body: { $regex: new RegExp(searchNoSpecialChar, 'i') } }
-//             ]
-//         });
-
-//         res.render("search", {
-//             locals,
-//             data,
-//             currentRoute: '/'
-//         });
-//     }
-//     catch(error) {
-//         console.log(error);
-//     }
-// })
-
-// // routing for pages
-
-// router.get('/about', (req, res) => {
-//     res.render('about', {
-//         currentRoute: '/about'
-//     });
-// })
-
-// router.get('/contact', (req, res) => {
-//     res.render('contact', {
-//         currentRoute: '/contact'
-//     });
-// })
-
-
-// // function insertPostData() {
-// //     Post.insertMany([
-// //         {
-// //             title: "Building a blog",
-// //             body: "This is the body text"
-// //         }
-// //     ])
-// // }
-// // insertPostData();
-
-// module.exports = router;
-
-
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
+const Contact = require('../models/Contact');
 
 // ------------------
 // EJS ROUTES
@@ -276,6 +161,30 @@ router.post('/api/search', async (req, res) => {
         res.json(data);
     } catch (error) {
         res.status(500).json({ error: 'Search failed' });
+    }
+});
+
+// contact page
+
+router.post('/contact', async (req,res) => {
+    try {
+        try{
+            const contact_data = new Contact({
+                name: req.body.name,
+                email: req.body.email,
+                message: req.body.message
+            })
+            await Contact.create(contact_data);
+            res.redirect('/contact');
+
+        }
+        catch(error) {
+            console.log(error);
+        }
+        res.redirect('/contact');
+    }
+    catch(error) {
+        console.log(error);
     }
 });
 

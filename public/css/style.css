@@ -16,13 +16,23 @@ body {
   font-family: 'Poppins', sans-serif;
   color: var(--black);
   font-size: var(--font-size-base);
-  background-color: #FAF5EE;
-  background-image: url("/img/rear.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #000;
   margin: 0;
 }
+
+.back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-image: url('/img/rear.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
 
 a { color: var(--black); }
 h1 { font-size: var(--font-size-xl); }
@@ -52,7 +62,7 @@ textarea {
   background-color: var(--black);
   border: none;
   color: white; 
-  padding: 16px 32px;
+  padding: 10px 12px;
   text-decoration: none;
   margin: 4px 2px; 
   cursor: pointer;
@@ -67,6 +77,16 @@ textarea {
 img {
   width: 100%;
   height: auto;
+}
+
+.button {
+  background-color: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  padding: 10px 12px;
+}
+a.button{
+  text-decoration: none;
 }
 
 /* Layout */
@@ -101,6 +121,7 @@ img {
   "logo button"
   "menu menu";
   padding-top: 10px;
+  position: relative;
 }
 
 @media only screen and (min-width: 768px) {
@@ -117,7 +138,6 @@ img {
   text-decoration: none;
   grid-area: logo;
   color: #ccc;
-  /* text-shadow: 2px 2px 2px black; */
 }
 
 .header-logo:hover {
@@ -190,6 +210,7 @@ img {
 .author {
   padding: 10px 0;
   text-align: center;
+  position: relative;
 }
 
 .author-heading {
@@ -201,15 +222,16 @@ img {
 
 .author-body {
   font-size: var(--font-size-md);
-  margin: 5px 0 40px 0;
+  margin: 0 0 40px 0;
+  font-weight: 600;
 }
 
 
 /* Home Article List */
 .articles-heading {
   margin-top: 2rem;
+  color: #ccc;
   
-  /* font-weight: 400; */
 }
 
 .article-ul {
@@ -249,6 +271,7 @@ img {
   .article-list-date {
     text-align: right;
   }
+
 }
 
 .article-ul li {
@@ -284,6 +307,39 @@ img {
   padding: 20px;
 }
 
+.article h1 {
+  margin: 0;
+}
+
+
+/* Messages */
+.msg-ind {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  padding: 20px;
+}
+.msg-ind h1 {
+  margin: 0;
+  color: #ccc;
+}
+.date h4, p{
+  font-weight: 500;
+  font-size: 15px;
+}
+.msg {
+  font-size: 18px;
+}
+
+.local {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
 /* Footer */
 .footer {
@@ -293,10 +349,59 @@ img {
   padding: 20px;
   margin: 4rem;
   text-align: center;
+  font-weight: 600;
+  color: #000;
 }
 
 
+/* About */
+.about {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.about h1 {
+  color: #ccc;
+  margin-bottom: 2px;
+}
+
+.about p {
+  background-color: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  padding: 20px;
+  font-weight: 500;
+}
+
+/* Contact */
+
+.contact {
+  position: relative;
+}
+.contact h1 {
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
 /* Dashboard Admin */
+
+.container {
+  position: relative;
+}
+
+form label {
+  color: #ccc;
+}
+
+.admin-sign {
+  position: relative;
+}
+.admin-sign h3 {
+  color: #ccc;
+}
+
 .admin-title {
   display: flex;
   justify-content: space-between;
@@ -336,12 +441,12 @@ img {
 .searchBar {
   visibility: hidden;
   transform: translateY(-100px);
-  /* background-color: var(--black); */
   backdrop-filter: blur(5px);
   padding: 4px 0;
   position: absolute;
   left: 0;
   right: 0;
+  z-index: 1000;
 }
 
 
@@ -361,6 +466,7 @@ img {
   right: 0;
   color: var(--gray-dark);
   padding: 15px;
+  font-weight: 600;
 }
 
 
